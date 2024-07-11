@@ -13,6 +13,8 @@ matplotlib = "==3.7.0"
 seaborn = "==0.12.2"
 plotly = "==5.13.0"
 fastparquet = "*"
+xgboost = "*"
+gensim = "*"
 
 [dev-packages]
 pre-commit = "==3.0.3"
