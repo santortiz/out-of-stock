@@ -15,6 +15,8 @@ plotly = "==5.13.0"
 fastparquet = "*"
 xgboost = "*"
 gensim = "*"
+scipy = "==1.12"
+nltk = "*"
 
 [dev-packages]
 pre-commit = "==3.0.3"
