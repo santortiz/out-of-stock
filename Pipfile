@@ -17,6 +17,9 @@ xgboost = "*"
 gensim = "*"
 scipy = "==1.12"
 nltk = "*"
+imbalanced-learn = "*"
+optuna = "*"
+ipywidgets = "*"
 
 [dev-packages]
 pre-commit = "==3.0.3"
