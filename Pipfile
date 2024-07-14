@@ -20,6 +20,7 @@ nltk = "*"
 imbalanced-learn = "*"
 optuna = "*"
 ipywidgets = "*"
+fastapi = "*"
 
 [dev-packages]
 pre-commit = "==3.0.3"
