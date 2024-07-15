@@ -21,6 +21,7 @@ imbalanced-learn = "*"
 optuna = "*"
 ipywidgets = "*"
 fastapi = "*"
+pydantic = "*"
 
 [dev-packages]
 pre-commit = "==3.0.3"
