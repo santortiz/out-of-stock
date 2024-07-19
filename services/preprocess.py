@@ -47,7 +47,7 @@ def dummy_encode(sku_data: dict) -> DataFrame:
 
     new_entry_aligned = new_entry_encoded.reindex(columns=CORE_SKUS_COLUMNS, fill_value=0)
 
-    return new_entry_aligned
+    return new_entry_aligned.astype(float)
 
 
 def preprocess(sku_data: dict) -> DataFrame:
