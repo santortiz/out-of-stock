@@ -3,8 +3,9 @@ from numpy import array
 from pickle import load
 
 CORE_SKUS_COLUMNS = [
-    'sold_quantity',
+    'sold_quantity_mean',
     'current_price',
+    'n_oses',
     'currency_ARG',
     'currency_MEX',
     'currency_REA',
@@ -30,11 +31,12 @@ def scale(sku_data: dict) -> dict:
     scaler = load_model(f"storage/models/{currency}_scaler.pkl")
 
     scaled_values = scaler.transform(
-        array([sku_data["sold_quantity"], sku_data["current_price"]]).reshape(1, -1)
+        array([sku_data["sold_quantity_mean"], sku_data["current_price"], sku_data["n_oses"]]).reshape(1, -1)
     )
 
-    sku_data["sold_quantity"] = scaled_values[0][0]
+    sku_data["sold_quantity_mean"] = scaled_values[0][0]
     sku_data["current_price"] = scaled_values[0][1]
+    sku_data["n_oses"] = scaled_values[0][2]
 
     return sku_data
 
@@ -45,9 +47,9 @@ def dummy_encode(sku_data: dict) -> DataFrame:
         columns=["currency", "listing_type", "shipping_logistic_type", "shipping_payment", "cluster"]
     )
 
-    new_entry_aligned = new_entry_encoded.reindex(columns=CORE_SKUS_COLUMNS, fill_value=0)
+    new_entry_aligned = new_entry_encoded.reindex(columns=CORE_SKUS_COLUMNS, fill_value=0).astype(float)
 
-    return new_entry_aligned.astype(float)
+    return new_entry_aligned
 
 
 def preprocess(sku_data: dict) -> DataFrame:
